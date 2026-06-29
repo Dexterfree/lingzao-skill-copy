@@ -1,8 +1,8 @@
 # 灵造 Skill
 
-给 Claude Code、Codex、OpenClaw 等 Agent 使用的创作者公开内容研究 Skill。
+免费、方法论优先的创作者内容 Skill，给 Claude Code、Codex、OpenClaw 等 Agent 使用。
 
-灵造 Skill 主要帮助自媒体创作者和运营者做这些事：
+灵造 Skill 帮助自媒体创作者和运营者做这些事：
 
 - 小红书 / 抖音 / 公众号公开内容研究
 - 对标账号发现与筛选
@@ -11,9 +11,10 @@
 - 关键词洞察、标题设计、发布前检查
 - 公众号 / 小红书 / 朋友圈等内容分发包
 - 发布后数据复盘
-- 小红书封面、图文、海报等图片生成工作流
+- 小红书封面、图文、海报的提示词与视觉风格包
 
-这个仓库只包含公开 Skill 文件和本地命令，不包含灵造服务端源码、供应商接口、密钥或内部配置。
+灵造是免费且纯方法论的：不调用任何付费 API，不发请求到第三方服务端；
+数据来源是你提供的素材（链接、截图、文案）或 Agent 自身的联网搜索。
 
 ## 当前版本
 
@@ -21,35 +22,17 @@
 
 ## 安装
 
-把仓库克隆到本地 Agent Skill 目录：
+把仓库克隆到本地 Agent Skill 目录即可，无需密钥、无需付费余额、无需安装脚本：
 
 ```bash
 git clone https://github.com/aed42068-png/lingzao-skill.git ~/.agents/skills/lingzao
 ```
 
-运行一次安装脚本：
-
-```bash
-bash ~/.agents/skills/lingzao/scripts/setup.sh --base-url "https://lingzao.atian.vip"
-```
-
-如果你已经有灵造 API Key，也可以一起配置：
-
-```bash
-bash ~/.agents/skills/lingzao/scripts/setup.sh \
-  --base-url "https://lingzao.atian.vip" \
-  --api-key "lgz_xxx"
-```
-
-检查是否配置成功：
-
-```bash
-~/.lingzao/bin/lingzao doctor
-```
+克隆后直接在支持 Skill 的 Agent 里使用，不需要运行任何脚本或配置任何环境变量。
 
 ## 使用方式
 
-安装后，在支持 Skill 的 Agent 里提到“使用灵造”或 `$lingzao`，Agent 会先阅读
+在支持 Skill 的 Agent 里提到“使用灵造”或 `$lingzao`，Agent 会先阅读
 [`SKILL.md`](SKILL.md)，再按你的任务进入对应 playbook。
 
 例子：
@@ -59,40 +42,33 @@ bash ~/.agents/skills/lingzao/scripts/setup.sh \
 - “用灵造拿我的账号和 5-15w 粉 AI 博主横向对比”
 - “用灵造给我做一条女性成长图文内容包”
 - “用灵造检查我的标题、封面、前三行和关键词有没有埋进去”
-- “用灵造根据参考图做一张小红书封面”
+- “用灵造根据参考图，帮我生成一张小红书封面的提示词包”
 
-## 付费能力边界
+## 能力边界
 
-安装 Skill 本身是免费的。它会先帮 Agent 判断你是在找方向、拆账号、写内容、
-做封面、配关键词，还是复盘数据。
+灵造 Skill 本身免费、纯方法论。它会先帮 Agent 判断你是在找方向、拆账号、写内容、
+做封面提示词、配关键词，还是复盘数据。
 
-当你需要实际调用灵造服务时，例如：
-
-- 搜索小红书 / 抖音 / 公众号公开内容
-- 查看账号主页、近期笔记、单条笔记详情
-- 读取评论区或公众号文章数据
-- 提取短视频文案
-- 生成图片素材
-
-就需要打开 [灵造网页版](https://lingzao.atian.vip)，按教程配置 API Key 和积分。
+所有数据都来自你提供的素材或 Agent 的联网搜索：
+不调用任何付费接口，不读取账号主页、笔记详情、评论或公众号文章的后台数据，
+不生成图片素材。如果你需要把方法论的输出落地成最终视觉稿，
+请把灵造给出的提示词包交给你的图像生成工具或 Agent 自身的生图能力。
 
 ## 更新
 
-进入本地 Skill 目录后拉取最新版本：
+进入本地 Skill 目录后拉取最新版本即可：
 
 ```bash
 cd ~/.agents/skills/lingzao
 git pull
-bash scripts/setup.sh --skip-doctor
 ```
 
-如果你已经配置过 API Key，更新不会删除 `~/.lingzao/config.json`。
+灵造没有本地配置文件，更新不需要任何额外步骤。
 
 ## 目录说明
 
 - [`SKILL.md`](SKILL.md)：Agent 入口说明
-- [`playbooks/`](playbooks)：自媒体运营、账号诊断、爆款拆解、作图、复盘等工作流
-- [`scripts/`](scripts)：本地 CLI 命令
+- [`playbooks/`](playbooks)：自媒体运营、账号诊断、爆款拆解、视觉提示词、复盘等工作流
 - [`agents/`](agents)：不同 Agent 平台的元信息
 
 ## 许可证
