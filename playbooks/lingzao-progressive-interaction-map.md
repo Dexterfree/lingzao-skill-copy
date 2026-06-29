@@ -45,7 +45,7 @@ review, knowledge-base saving, or next experiment.
   entered a diagnosis flow, assume there is a hidden wish to change even when
   they resist action. Output should include conclusion, action advice, and
   psychological reassurance.
-- Before any Lingzao search/lookup, remind the user of the likely search type and credit logic. Follow `search-credit-notice.md`.
+- Before any Lingzao search/lookup, remind the user of the likely search type and scope before searching.
 - Infer the user's current interest from repeated behavior. If the user asks
   Lingzao to break down many notes/accounts in the same direction, such as 10
   female-growth notes, AI-tool notes, food/local-life notes, or creator
@@ -183,8 +183,8 @@ too small:
 - 6-9 notes: provide 轻量账号分析.
 - 10-19 notes: offer 标准账号分析 v1.
 - 20+ notes: offer 标准账号诊断报告; if using deep profile analysis, explain the
-  20-work credit scope first.
-- 40+ notes: offer 深度诊断 / 博主蒸馏 / 知识库沉淀; explain the 40-work credit
+  20-work scope first.
+- 40+ notes: offer 深度诊断 / 博主蒸馏 / 知识库沉淀; explain the deeper 40-work
   scope first.
 
 If fewer than 10 public notes are visible, use this wording before the output:
@@ -365,7 +365,7 @@ If the user has no links, ask for the smallest useful input:
 
 你可以先发 3-10 条你最近收藏、喜欢、想模仿的小红书链接；如果暂时没有链接，也可以发一个关键词，比如“女性成长图文”“35岁职场”“AI工具”“本地生活探店”。我先帮你做第一版内容资产表。
 
-If a search is needed, use `search-credit-notice.md` before searching.
+If a search is needed, confirm the scope with the user before searching.
 
 Knowledge-base outputs should organize transformed learning notes, not raw
 archives. Preserve source links and public metrics when available, then add:
@@ -450,7 +450,7 @@ Examples:
 - 帮我做口播 / 图文 / Vlog
 
 This workflow sits between topic radar and draft rewrite. It should not stop at
-search results. Confirm the search scope and credit tier, filter learnable
+search results. Confirm the search scope, filter learnable
 examples, then produce content packages. Ordinary user outputs should not
 include Lingzao, A Tian, or official logos unless explicitly requested.
 
@@ -760,7 +760,7 @@ keyword/dropdown analysis, or enterprise/brand/institution keyword opportunity
 report, route to `keyword-insight-report-template.md` before searching. A
 keyword insight report is not one search result; it is a scoped deliverable
 with a main keyword, confirmed related keywords, sample classification, user
-demand map, opportunity list, and credit estimate.
+demand map, and opportunity list.
 
 Flow:
 
