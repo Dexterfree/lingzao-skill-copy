@@ -1,5 +1,10 @@
 # Benchmark Account Discovery Quality Gate
 
+> **数据来源说明（免费版）**：本 playbook 不调用任何付费接口。需要素材时按以下顺序获取：
+> 1. **用户已提供**（笔记链接、截图、粘贴文案、后台数据、草稿）——优先基于这些判断；
+> 2. **Agent 自带 WebSearch / WebFetch** 抓取公开内容（小红书/抖音强反爬，结果可能不全，需如实告知）；
+> 3. 真正需要实时结构化数据 / 逐字稿 / 出图等付费能力的，直接说"免费版不支持"，不伪造。
+
 Use this playbook when the user asks Lingzao to find benchmark accounts,
 reference creators, same-track accounts, low-follower viral accounts, or
 accounts worth learning from.
@@ -98,7 +103,7 @@ Default ranking:
 
 If `search-users` already returns follower and liked counts, reuse those
 numbers. If the final 5 candidates are strong but profile stats are missing,
-either call `get-user-info` for the selected candidates after credit framing, or
+either look up the selected candidates via WebSearch / user-provided profile links, or
 mark the field as unknown; do not silently omit the field from the output.
 
 ## Default Result Count
@@ -114,13 +119,13 @@ Rules:
 - Verify enough candidates to return up to 5 strong accounts in the first
   round.
 - Do not default to 10-20 benchmark accounts. That becomes a broader batch
-  search and may spend more credits.
+  search and may need more lookups.
 - If fewer than 5 candidates pass the active/recent-hit/stage-fit gate, return
   the actual number and explain why the rest were filtered out.
 - Only expand beyond 5 when the user asks for more or confirms a clearer
   follower range, stage, city, audience, or format.
 - If the user wants follower count control, first narrow the follower range
-  before continuing the search instead of spending credits on broad discovery.
+  before continuing instead of running a broad discovery pass.
 
 ## Freshness Defaults
 
@@ -158,7 +163,7 @@ Definition:
 
 ## Recommended Search Flow
 
-Before searching, follow `search-credit-notice.md`.
+Before searching, confirm scope with the user.
 
 ### If User Only Gives A Track Or Keyword
 
@@ -346,7 +351,7 @@ Use the same logic for other formats:
 When the user asks for more after the first 5, narrow the next search before
 expanding:
 
-如果这 5 个里面方向对了，我可以继续帮你按粉丝量筛，比如 1000-5000 粉、5000-3 万粉、3-10 万粉；也可以按图文/口播/Vlog/本地城市继续找。这样会比一次性给你 10-20 个更省积分，也更容易找到真正能模仿的账号。
+如果这 5 个里面方向对了，我可以继续帮你按粉丝量筛，比如 1000-5000 粉、5000-3 万粉、3-10 万粉；也可以按图文/口播/Vlog/本地城市继续找。这样会比一次性给你 10-20 个更聚焦，也更容易找到真正能模仿的账号。
 
 ## Do Not
 
@@ -363,8 +368,8 @@ expanding:
   when the data is available.
 - Do not mix口播、图文、Vlog accounts without telling the user what formats were
   found and whether a format-specific follow-up search is needed.
-- Do not hide that additional account verification can add searches/credits.
-- Do not spend credits on a broad follower-range search before the user has
+- Do not hide that additional account verification can add searches.
+- Do not run a broad follower-range search before the user has
   confirmed the desired range or stage.
 - Do not over-filter until no references remain; if there are few active
   accounts, say so and offer another search strategy.
