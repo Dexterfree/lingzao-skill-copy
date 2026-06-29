@@ -14,11 +14,13 @@ Every task implicitly includes these. Copied verbatim from the spec (`docs/super
 
 **GC-1 — Version:** `VERSION` file becomes `0.1.66-free` (Task 4).
 
-**GC-2 — The residual-reference pattern (the gate).** After a task touches a file, this grep must return **zero** lines for that file:
+**GC-2 — The residual-reference pattern (the gate).** After a task touches a file, this grep must return **zero** lines for that file. This is the **canonical** pattern — it supersedes any per-task gate string printed in task briefs (which were extracted before this broadening):
 
 ```
-lingzao |search-notes|get-note-detail|get-user-info|get-user-posted-notes|analyze-user-profile|get-note-comments|extract-video-copy|generate-image|get-article-detail|/api/v1|lgz_|API Key|api_key|积分|credits|base-url|base_url|doctor|check-version|网页版|atian.vip|assets-tian
+lingzao |search-notes|get-note-detail|get-user-info|get-user-posted-notes|analyze-user-profile|get-note-comments|extract-video-copy|generate-image|get-article-detail|/api/v1|lgz_|API Key|api_key|积分|credit|search-credit-notice|base-url|base_url|doctor|check-version|网页版|atian.vip|assets-tian
 ```
+
+**Broadening note (mid-execution correction):** the original gate used the plural token `credits`, which missed singular `credit` (e.g. "credit scope", "credit tier", "credit estimate", "credit confirmation", "--limit 20 after credit confirmation") and dangling `search-credit-notice` references to the file deleted in Task 2. The token is now bare `credit`, which catches all of these. Legitimate non-billing terms (`购买`/`咨询` about the user's own monetization funnel) are intentionally NOT gated.
 
 Note: `lingzao ` (with trailing space) matches command calls like `lingzao search`, `~/.lingzao/bin/lingzao <cmd>`, and `Lingzao searches`. It does **not** match the standalone skill name `Lingzao`/`灵造` in prose, which is allowed.
 

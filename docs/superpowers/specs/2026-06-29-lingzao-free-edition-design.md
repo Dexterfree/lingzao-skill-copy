@@ -169,10 +169,13 @@ The 18 clean playbooks (no core changes expected):
 A change is "done" only when all hold:
 
 1. **Zero residual references.** `grep -rn` across the repo returns nothing for:
-   `lgz_`, `/api/v1`, `credits`, `积分`, `generate-image`, `~/.lingzao`,
+   `lgz_`, `/api/v1`, `credit`, `积分`, `generate-image`, `~/.lingzao`,
    `search-notes`, `get-note-detail`, `get-user-info`, `get-user-posted-notes`,
    `analyze-user-profile`, `get-note-comments`, `extract-video-copy`,
-   `get-article-detail`, `API Key`, `lingzao.atian.vip`, `assets-tian.midao`.
+   `get-article-detail`, `API Key`, `lingzao.atian.vip`, `assets-tian.midao`,
+   `search-credit-notice`. (Token is bare `credit` — also catches `credits`,
+   `credit scope/tier/estimate`, etc. Legitimate non-billing terms like
+   `购买`/`咨询` about the user's own monetization are not gated.)
 2. **`scripts/` removed**, repo still has `SKILL.md`, `playbooks/`, `agents/`.
 3. **`agents/` metadata carries no required env** beyond what the free edition
    actually needs (none expected).
