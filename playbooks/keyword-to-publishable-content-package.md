@@ -18,6 +18,11 @@ This is different from:
 - `reference-image-graphic-note-workflow.md`: visual/page package after the user
   has a reference image or asks how to make graphics.
 
+> **数据来源说明（免费版）**：本 playbook 不调用任何付费接口。需要素材时按以下顺序获取：
+> 1. **用户已提供**（笔记链接、截图、粘贴文案、后台数据、草稿）——优先基于这些判断；
+> 2. **Agent 自带 WebSearch / WebFetch** 抓取公开内容（小红书/抖音强反爬，结果可能不全，需如实告知）；
+> 3. 真正需要实时结构化数据 / 逐字稿 / 出图等付费能力的，直接说"免费版不支持"，不伪造。
+
 ## Core Principle
 
 The user is not asking for a search list. They want a path from "I have a
@@ -28,7 +33,7 @@ Turn keyword research into a publishable package:
 1. clarify the user's real intent behind the keyword
 2. clarify or infer who the content is for and who will click
 3. confirm the publishing format: graphic note/image, spoken video, or Vlog
-4. confirm search scope and credit tier before lookup
+4. confirm search scope before lookup
 5. search only the confirmed keywords or references
 6. filter examples by learnability, not only likes
 7. extract topic, title, cover, structure, keyword, and visual formulas
@@ -132,7 +137,7 @@ captured for the current task, current content package, or current conversation.
 If the runtime has an actual memory or knowledge-base tool and the user asks to
 save it, use `content-knowledge-base-workflow.md`.
 
-## First Response And Credit Scope
+## First Response And Scope
 
 If the user gives only one keyword and wants content output, do not start a
 large search silently. Explain that this is a content package workflow, then
@@ -142,11 +147,12 @@ Use this wording:
 
 可以做。这个不是单纯搜关键词，而是把关键词下面的参考内容拆成「选题 + 标题 + 封面 + 图文结构 + 正文方向 + 10 个发布关键词」。
 
-先确认范围，避免一下子花太多积分：
+先确认范围，避免一次性铺太大：
 
-A. 快速版：只搜主关键词 1 次，先给 3 条内容方向和标题/封面建议，通常约 20 credits。
-B. 标准版：搜主关键词 + 3 个相关词，产出 5 条内容包，每条包含标题、封面、图文结构和关键词，通常约 80 credits；如果继续打开单篇详情会再增加。
-C. 批量版：搜 8-10 个相关词，先做 10-20 条选题库，再精写 3 条内容包，通常约 180-220 credits 起；如果要看完整正文、评论区或逐字稿，会进入深度搜索。
+- A. 快速版：主关键词 1 次（用户已有素材，或 1 次 WebSearch），先给方向 / 快速判断。
+- B. 标准版：主关键词 + 3 个相关词（或用户多给几条参考素材），产出更完整的结构。
+- C. 深度版：8–10 个以上相关词 + 代表样本深读，适合做策略。
+开始前先列清楚要做哪些搜索 / 读哪些素材，用户确认后再继续，不自行扩大范围。
 
 默认搜索设置：小红书、图文优先、近半年、高赞/高收藏内容优先。如果你只回复 A / B / C，就表示接受这些默认搜索设置；如果你有平台、时间、内容类型或排序偏好，可以和选项一起告诉我。
 
@@ -158,7 +164,7 @@ again.
 If the user states only the scope, such as "标准版", "B", or "批量版", but the
 current conversation has not visibly shown the default platform, note type,
 time range, and sorting, show those defaults first and ask the user to reply
-"默认" or edits before any paid search.
+"默认" or edits before searching.
 
 If the user says "用默认" or "你看着来" after the default settings have been
 shown, use Standard Version B unless the keyword is too broad or commercial
@@ -166,9 +172,8 @@ search cost is likely high.
 
 ## Search Scope Rules
 
-Before calling Lingzao search tools, use `search-credit-notice.md` whenever the
-scope involves paid search, multiple keywords, note details, comments, full
-copy, subtitles, or transcripts.
+Before searching, confirm scope with the user whenever it involves multiple
+keywords, note details, comments, full copy, subtitles, or transcripts.
 
 Default search settings:
 
@@ -186,20 +191,20 @@ If the user only replies A / B / C after the scope prompt above, treat it as
 acceptance of the visible default settings: Xiaohongshu, 图文优先, 近半年, and
 high-like/high-save discovery. If those exact defaults were not shown in the
 current conversation, do not search yet; show the defaults and ask for "默认" or
-edits before any paid search.
+edits before searching.
 
 For Standard Version B, list the main keyword plus the 3 related keywords before
 searching. Ask the user to reply "默认" to accept or replace any term. Do not
 search hidden related terms.
 
 For Batch Version C, list the 8-10 planned search keywords before spending
-credits. Group them by intent when possible, such as audience, pain, result,
+searches. Group them by intent when possible, such as audience, pain, result,
 scenario, city, format, or product. Ask the user to confirm the list or cut the
 scope.
 
-Do not imply that the user pays per returned search result. Credit grows from
+Do not imply that the user pays per returned search result. Scope grows from
 actual searches, profile analysis, note details, comments, full copy, subtitles,
-and broader scope.
+and broader coverage.
 
 ## Filtering Rules
 
@@ -608,7 +613,7 @@ want to do spoken video.
 
 The user does not need to write image prompts. If they provide only a broad
 topic such as 女性成长, search or inspect suitable public references within the
-confirmed credit scope, extract the reusable angle, rewrite it into original
+confirmed scope, extract the reusable angle, rewrite it into original
 graphic-note content, and then route to visual generation when available.
 
 Process:
