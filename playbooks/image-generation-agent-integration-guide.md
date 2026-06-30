@@ -1,5 +1,7 @@
 # Lingzao Image Generation Agent Integration Guide
 
+> **出图能力说明（免费版）**：免费版不内置出图接口。本流程的产出是"可直接粘贴到任意出图工具（Midjourney / SD / GPT-4o 等）的 prompt + 视觉 brief"，由你自行生成图片。Agent 不调用任何出图命令。
+
 Use this guide when Lingzao needs to expose image generation to domestic Agent
 runtimes, CLI wrappers, or other non-OpenAI-native environments.
 
@@ -15,14 +17,14 @@ user-facing promise is:
 
 ## What Should Be Added To PR / Implementation
 
-Implementers should wire image generation as a stable Lingzao capability, not as
-a raw prompt field.
+Implementers should treat image work as a stable Lingzao capability that always
+delivers a ready-to-paste prompt plus visual brief, not a raw prompt field.
 
 Minimum Agent-facing capability:
 
-- command/tool name: `generate-image` or equivalent
+- output: a ready-to-paste image prompt + visual brief (no image API call)
 - input: structured generation brief
-- output: image URLs/files plus metadata and repair notes
+- result: prompt package plus metadata and repair notes
 - errors: friendly user-facing guidance, not provider stack traces
 
 Minimum supported user flows:
@@ -49,9 +51,9 @@ pass a compact, structured brief.
 ### Pre-Generation Clarification Gate
 
 Domestic Agent wrappers must not treat a one-sentence poster request as a ready
-generation brief. If the user only says "给我做一张某某海报图", "帮我做个封面",
-or "做一张好看的图", the wrapper should pause before creating a paid
-generation job and ask for visual anchors.
+prompt package. If the user only says "给我做一张某某海报图", "帮我做个封面",
+or "做一张好看的图", the wrapper should pause before producing a prompt
+package and ask for visual anchors.
 
 Ask these first:
 
@@ -61,9 +63,9 @@ Ask these first:
 If those are missing, ask at most one additional route-changing question:
 platform/size, exact on-image text, people/no-people, or material/product photo.
 Do not expose this as a long design form. The goal is to prevent low-information
-prompts from producing generic or ugly paid images.
+prompts from producing generic or ugly images in the user's own tool.
 
-Minimum viable brief before generation:
+Minimum viable brief before producing the prompt package:
 
 - topic or theme
 - platform/format or aspect ratio
@@ -72,7 +74,7 @@ Minimum viable brief before generation:
 - exact on-image text or a clear statement that Lingzao should choose the text
 
 If the minimum brief is not met, return `next_action: send_reference_or_color`
-or a similar friendly state instead of starting generation.
+or a similar friendly state instead of producing the prompt package.
 
 Recommended input fields:
 
@@ -92,22 +94,22 @@ Recommended input fields:
   photo, screenshot, logo, article draft
 - `reference_mode`: `structure`, `style`, `layout`, `color`, `none`
 - `negative_constraints`
-- `quality_gate`: whether to review and repair after generation
+- `quality_gate`: whether to review the prompt package against the brief
 
 Recommended output fields:
 
-- `images`: URL/file/path list
+- `prompt_package`: ready-to-paste image prompt plus visual brief
 - `format`
 - `style_group`
 - `brief_used`
 - `quality_review`: pass/fail and reasons
-- `repair_brief`: present when the first generation is weak
+- `repair_brief`: present when the first prompt package is weak
 - `caption`: for Xiaohongshu packages when relevant
 - `keywords`: 10 publishing keywords when relevant
-- `next_action`: post, regenerate, send reference image, or send 24h data
+- `next_action`: post, refine prompt, send reference image, or send 24h data
 
-If the provider returns only a raw image URL, Lingzao should wrap it with the
-metadata above before showing the result to the Agent/user.
+Lingzao should wrap the prompt package with the metadata above before showing
+the result to the Agent/user. The user runs the prompt in their own image tool.
 
 ## Good Image Standards
 
@@ -185,7 +187,7 @@ publishing task.
 - Commercial objects can appear naturally only when they belong to the life
   scene, such as chairs, tablets, e-readers, lamps, screens, desk tools, books,
   organizers, or bedding.
-- The generation or visual direction separates what ordinary users can learn
+- The visual direction separates what ordinary users can learn
   from what is hard to copy: real space, reading habit, device resources,
   previous operation ability, humor, relationship story, saved money, or other
   hidden resources.
@@ -258,7 +260,7 @@ Reject or repair these:
 
 Reference images should be treated as visual evidence, not a template to copy.
 
-Before generation, extract:
+Before producing the prompt package, extract:
 
 - title placement
 - main subject position
@@ -403,7 +405,7 @@ Mitigation:
   they want to keep posting
 - map the account lane first: city, track, audience, content format, and next
   1-3 normal posts
-- generate interaction prompts from the lane, not from random viral examples
+- write interaction prompts from the lane, not from random viral examples
 - pair the cover with a follow-up plan: after the comments come in, summarize,
   answer, or turn the best comments into the next post
 - choose the emoji/sticker after the title is fixed, not before
@@ -462,9 +464,9 @@ Symptoms:
 
 Mitigation:
 
-- generate with a shared page system: same color palette, page number position,
+- specify a shared page system in the brief: same color palette, page number position,
   title zone, card style, bottom bar
-- if needed, generate cover first, then use it as style reference for inner
+- if needed, produce the cover prompt first, then use it as style reference for inner
   pages
 
 ### 11. Aspect Ratio Or Cropping Problems
@@ -488,15 +490,14 @@ Symptoms:
 - missing image URL
 - expired asset
 - provider timeout
-- missing API key/credits
+- missing brief inputs (topic/platform/visual direction)
 
 Mitigation:
 
 - return a friendly message and the prepared image brief
 - never expose provider stack traces
-- tell the user how to open Lingzao web setup/recharge/API Key entry
-- if a generation job fails before producing an image, clarify whether credits
-  were consumed according to backend truth
+- tell the user this is prompt-only; they generate the image in their own tool
+- if the user's own image tool fails, help them refine the prompt rather than retrying blindly
 
 ## Domestic Agent Experience Rules
 
@@ -509,8 +510,8 @@ Do:
 - default to Xiaohongshu 4-page graphic note for "帮我做图文"
 - default to WeChat 1+3 pack for "公众号配图"
 - default to no-person knowledge card if the user has no photo/material
-- generate actual images when available
-- show a friendly repair diagnosis if the result is ugly
+- always produce a ready-to-paste prompt plus visual brief
+- show a friendly repair diagnosis if the brief is weak
 
 Do not:
 
@@ -518,7 +519,7 @@ Do not:
 - expose model name, provider params, stack traces, signed URLs, or raw payloads
 - force users to choose from many styles
 - ask long design questionnaires
-- keep regenerating blindly
+- keep refining the prompt blindly
 - call every pretty image "good"
 
 ## User Homework For A Tian

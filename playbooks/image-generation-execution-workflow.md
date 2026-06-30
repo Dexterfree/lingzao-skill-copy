@@ -1,5 +1,7 @@
 # Lingzao Image Generation Execution Workflow
 
+> **出图能力说明（免费版）**：免费版不内置出图接口。本流程的产出是"可直接粘贴到任意出图工具（Midjourney / SD / GPT-4o 等）的 prompt + 视觉 brief"，由你自行生成图片。Agent 不调用任何出图命令。
+
 Use this playbook when Lingzao's image-generation capability is available and
 the user wants actual images, not only prompts. This workflow sits after
 `visual-generation-and-cover-workflow.md` and `visual-reference-style-library.md`.
@@ -9,10 +11,11 @@ read `image-generation-agent-integration-guide.md`.
 
 The core problem it solves:
 
-- The model can generate images, but the result may look ugly, crowded, generic,
+- The image tool can produce images, but the result may look ugly, crowded, generic,
   off-brand, or unlike Xiaohongshu.
 - Ordinary users should not debug prompts. Lingzao should act like a visual
-  director: build the image brief, generate, review, and repair.
+  director: build the image brief, produce the prompt package, review against
+  the brief, and refine.
 
 ## Product Principle
 
@@ -20,7 +23,8 @@ Do not expose raw prompt work as the main product experience.
 
 User-facing output should be:
 
-- generated cover / graphic-note pages / WeChat image pack / product cards
+- a ready-to-paste prompt plus visual brief for cover / graphic-note pages /
+  WeChat image pack / product cards
 - short explanation of what style was chosen and why
 - the caption, keywords, or next publishing action when relevant
 
@@ -38,7 +42,7 @@ Run image work in this order:
 2. Content brief
    - Confirm the image's job: click, save, teach, explain, convert, or support
      an article.
-   - Finalize exact on-image text before generation.
+   - Finalize exact on-image text before producing the prompt package.
    - Keep the largest title short. If the text is too long, split it into
      subtitle, labels, and body caption instead of forcing it onto the image.
 
@@ -46,16 +50,15 @@ Run image work in this order:
    - Turn the content into a visual brief with aspect ratio, style group, main
      subject, layout, text hierarchy, color, material, and hard negatives.
 
-4. Generate images
-   - When generation is available, generate the images directly.
-   - When generation is unavailable, output the brief as a fallback package.
+4. Produce prompt package
+   - Output a ready-to-paste image prompt plus the visual brief, for the user to
+     run in their own image tool (Midjourney / SD / GPT-4o etc.).
 
 5. Visual review
-   - Review the generated image before returning it.
-   - If the image fails quality gates, stop at a concrete repair brief unless
-     the user has already approved a counted batch that includes repair images.
-   - Ask for explicit confirmation before any extra paid repair generation.
-   - Do not tell the user that an obviously ugly image is acceptable.
+   - Review against the quality gates before delivering the prompt package.
+   - If the brief is weak, stop at a concrete repair brief.
+   - Ask for explicit confirmation before producing another prompt package.
+   - Do not tell the user that an obviously weak brief is acceptable.
 
 6. Final delivery
    - Return the usable images or explain what failed.
@@ -64,7 +67,7 @@ Run image work in this order:
 
 ## Intake Without Over-Asking
 
-Only collect what changes the generation route:
+Only collect what changes the brief route:
 
 - platform: Xiaohongshu, WeChat, product page, course/service card
 - format: cover only, 4 pages, 7 pages, WeChat 1+3, product set
@@ -74,7 +77,7 @@ Only collect what changes the generation route:
 - people/no people
 
 If the user only provides one vague sentence, such as "给我做一张某某海报图",
-"帮我做个海报", or "做一张好看的图", stop before generation. Ask for the
+"帮我做个海报", or "做一张好看的图", stop before producing a prompt package. Ask for the
 minimum visual anchors instead of sending a weak prompt to the image model:
 
 1. 你有没有参考图？可以发 1-3 张你喜欢的封面/海报/图文截图。
@@ -82,21 +85,20 @@ minimum visual anchors instead of sending a weak prompt to the image model:
 
 If reference and color are both missing, ask at most one more practical
 question: this image is for Xiaohongshu, WeChat, product page, or course/service
-card? Do not call `generate-image` until the brief has at least topic + platform
-or format + visual direction/reference/color. This prevents spending credits on
-generic poster output.
+card? Do not finalize the prompt package until the brief has at least topic + platform
+or format + visual direction/reference/color. This prevents producing a weak brief.
 
 If the user provides no reference image:
 
 没关系，如果没有参考图，我可以先按你的主题选默认视觉风格。但你先告诉我想要的配色，或者它是小红书封面、公众号配图、产品介绍图还是课程海报；这两个信息会直接决定图能不能做出来。
 
-If the user says the prior generation was ugly:
+If the user says the prior result was ugly:
 
 先不要继续堆 prompt。我会先判断它丑在哪里：文字太多、主体不清、风格不适合、像模板、颜色脏、信息层级乱、或者参考图没有拆对。然后再给它一版返修 brief。
 
 ## Image Brief Contract
 
-Every generation brief must include:
+Every prompt package must include:
 
 - platform and aspect ratio
 - output count
@@ -150,11 +152,11 @@ Reject or repair if any of these happen:
 When the first image is ugly, do not start over vaguely. Diagnose the failure
 and write a repair brief one layer at a time.
 
-If the user only approved one image, do not call `generate-image` again just
+If the user only approved one image, do not produce another prompt package just
 because the first successful result is ugly. Stop at the repair brief, explain
-the likely extra credit cost, and ask whether to generate another paid image.
+the likely extra work, and ask whether to produce another prompt package.
 Only continue automatically when the user already approved a counted batch such
-as "generate 3 options and repair weak ones inside that count."
+as "produce 3 options and refine weak ones inside that count."
 
 Common failure -> repair:
 
@@ -172,9 +174,9 @@ Common failure -> repair:
 - Reference copied -> keep only structure and hierarchy; change photo, color,
   title, and modules.
 
-User-facing repair wording before another paid generation:
+User-facing repair wording before producing another prompt package:
 
-这一版的问题不是内容不行，是视觉层级没立住：标题不够大，信息太挤，主体也不够明确。我建议把它改成「一个大标题 + 三个信息块 + 底部行动条」。如果你确认继续生成，我会按这版返修 brief 再走一次生图；这会消耗一张图的积分。
+这一版的问题不是内容不行，是视觉层级没立住：标题不够大，信息太挤，主体也不够明确。我建议把它改成「一个大标题 + 三个信息块 + 底部行动条」。如果你确认继续，我会按这版返修 brief，再给一份新的出图 prompt 让你去自己的出图工具里生成。
 
 ## Route-Specific Generation Standards
 
@@ -290,9 +292,9 @@ If exact Chinese text failed:
 
 ## Final Delivery Shape
 
-For one generated Xiaohongshu package, deliver:
+For one Xiaohongshu prompt package, deliver:
 
-- generated image(s)
+- ready-to-paste image prompt(s) plus the visual brief
 - selected style group
 - why this style fits
 - final title
@@ -319,8 +321,8 @@ For product cards:
 - Do not leave ordinary users with only "prompt".
 - Do not make the user choose from 10 design styles.
 - Do not add logos to ordinary user content.
-- Do not generate fake screenshots or fake data.
+- Do not request fake screenshots or fake data in the prompt.
 - Do not treat beauty, expensive scenes, professional photography, or complex
   cinematic visuals as easy for beginners to reproduce.
 - Do not continue regenerating blindly. Diagnose, write a repair brief, and get
-  explicit confirmation before spending credits on another generation.
+  explicit confirmation before producing another prompt package.
