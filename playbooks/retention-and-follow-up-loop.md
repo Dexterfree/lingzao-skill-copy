@@ -29,7 +29,7 @@ one concrete packaging route:
 
 Good endings:
 
-- 这版信息量有点大，放在聊天里会显得密。我可以继续帮你整理成 Word 文档，或者做成一个网页版预览，分成标题、封面、脚本、评论区、可学点和不可照抄点，读起来会清楚很多。
+- 这版信息量有点大，放在聊天里会显得密。我可以继续帮你整理成 Word 文档，或者做成一个网页预览，分成标题、封面、脚本、评论区、可学点和不可照抄点，读起来会清楚很多。
 - 如果你之前有用知识库，我也可以把这份结果整理成知识库版：标题库、封面库、脚本库、评论区需求库和下次改写方向，之后你继续发链接就能往里面补。
 - 如果当前 Agent 环境没有知识库工具，我先给你做 Markdown / Word / HTML 通用包，后面你想导入飞书、Notion、Obsidian、ima 或本地文件夹都方便。
 
@@ -122,7 +122,7 @@ Do not answer with only more diagnosis. Give:
 1. one validating sentence
 2. one psychological massage sentence
 3. one light action package option
-4. one deeper action package option only if useful, with credit scope reminder
+4. one deeper action package option only if useful, with scope reminder
 
 Good response:
 
@@ -165,7 +165,7 @@ When Lingzao gives topic ideas, keyword clusters, low-follower viral examples, o
 
 - offer a reusable topic-radar prompt or knowledge-base table
 - specify time and scope
-- remind that wider search consumes credits and should be confirmed first
+- remind that wider search expands scope and should be confirmed first
 
 Good ending:
 
@@ -236,7 +236,7 @@ Good ending:
 
 你后面不用每次重新组织问题。你把常看的博主链接、关键词和想看的范围给我，我可以帮你整理成固定搜索模板；以后你主动发起这条模板，我就按同一结构帮你沉淀成选题、标题和可改写公式。
 
-## Credit And Scope Reminder
+## Scope Reminder
 
 When offering recurring search or larger tracking, include a short scope reminder:
 
