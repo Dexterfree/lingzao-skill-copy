@@ -1,5 +1,10 @@
 # Lingzao Self Account Diagnosis Report Template
 
+> **数据来源说明（免费版）**：本 playbook 不调用任何付费接口。需要素材时按以下顺序获取：
+> 1. **用户已提供**（笔记链接、截图、粘贴文案、后台数据、草稿）——优先基于这些判断；
+> 2. **Agent 自带 WebSearch / WebFetch** 抓取公开内容（小红书/抖音强反爬，结果可能不全，需如实告知）；
+> 3. 真正需要实时结构化数据 / 逐字稿 / 出图等付费能力的，直接说"免费版不支持"，不伪造。
+
 Use this template when the user chooses A / says this is their own Xiaohongshu account / asks why their own account is stuck.
 
 The goal is to tell the user:
@@ -124,10 +129,10 @@ Two levels:
 1. Light activation: no extra search needed if it only uses the existing
    diagnosis. Output one next note direction, 3 titles, 1 cover keyword, opening
    3 lines, and what to send back after publishing.
-2. Deep activation: may consume additional credits if it needs to find new
+2. Deep activation: may need additional searches if it needs to find new
    benchmark accounts, open note details, read comments, inspect backend
    screenshots with the note context, or build a 7-day/30-day content package.
-   Use `search-credit-notice.md` before expanding.
+   Confirm scope with the user before expanding.
 
 Good offer:
 
@@ -182,8 +187,8 @@ Use this routing:
 | 3-5 | 起步号小诊断 | Judge whether the direction is scattered, whether any early signal is worth continuing, and give a 7-day publishing path. Avoid heavy conclusions. |
 | 6-9 | 轻量账号分析 | Analyze preliminary content mainline, update state, title/cover issues, and next 7-14 days. Mark user persona and viral mechanism as early hypotheses. |
 | 10-19 | 标准账号分析 v1 | Include user persona, content columns, early standout vs baseline, title/cover patterns, same-stage references, and 7/30-day actions. |
-| 20-39 | 标准账号诊断报告 | Use as the normal full-report range. Deep profile analysis can use `--limit 20` after credit confirmation. |
-| 40+ | 深度诊断 / 博主蒸馏 / 知识库沉淀 | Use `--limit 40` after credit confirmation when the user wants deeper report, creator distillation, or knowledge-base assets. |
+| 20-39 | 标准账号诊断报告 | Use as the normal full-report range. 20+ public notes fit a standard deep diagnosis. |
+| 40+ | 深度诊断 / 博主蒸馏 / 知识库沉淀 | 40+ public notes fit deeper diagnosis, creator distillation, or knowledge-base assets. |
 
 If the account has fewer than 10 public notes, the chat must explicitly say the
 sample is still small and downgrade the deliverable. The tone should be
@@ -310,8 +315,7 @@ For a client-facing own-account diagnosis, include these sections by default:
 14. 下一步行动清单
 15. 超预期高光结论：一张可以截图分享的结论卡，包含结论、行动建议和心理按摩
 16. 诊断后温柔结论 / 继续分析入口
-17. 可选诊断后行动包：只在用户想继续时提供轻量版或深度版，并按
-    `search-credit-notice.md` 说明是否会新增积分消耗
+17. 可选诊断后行动包：只在用户想继续时提供轻量版或深度版，并说明这次会做哪些搜索 / 读哪些素材，先和用户确认范围
 
 Only use the full structure above when the sample-size gate allows standard
 account analysis or above. For accounts below 10 public notes, use a lighter
@@ -502,8 +506,8 @@ The order should be:
 3. 一个具体下一步: choose only one best next action, not a menu of everything.
 4. 回来复盘入口: tell the user exactly what to send back.
 5. Optional activation offer: if the user wants to turn the diagnosis into an
-   action package, offer the light/deep choice and explain credit scope before
-   deeper search.
+   action package, offer the light/deep choice and explain scope before deeper
+   search.
 6. Knowledge-base sync question if useful.
 
 - 是否有其他参考博主？可以继续分析你和他的差距、不同，以及哪些地方可以模仿。
