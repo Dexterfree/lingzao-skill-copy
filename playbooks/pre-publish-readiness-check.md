@@ -174,7 +174,7 @@ End with:
 
 - Do not promise the note will go viral.
 - Do not run keyword or benchmark searches unless the user asks for external
-  references and confirms the credit scope.
+  references and confirms the scope.
 - Do not rewrite the full note if only the final gate is needed.
 - Do not evaluate cover quality if the user has not provided cover copy,
   reference image, generated image, or page outline; ask for it or mark it as

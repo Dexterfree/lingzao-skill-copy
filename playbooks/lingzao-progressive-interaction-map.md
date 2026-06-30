@@ -462,7 +462,7 @@ publishing format, ask one light format question first:
 If the user already specified 图文, 口播, 视频, 逐字稿, Vlog, or 分镜, do not ask
 again. Route directly to the matching delivery mode in the playbook.
 
-## Layer 0.5: Search Credit Notice
+## Layer 0.5: Search Scope Notice
 
 Before running any search, lookup, keyword research, comparable-account search, note lookup, or comment lookup, tell the user whether this is:
 
@@ -472,7 +472,7 @@ Before running any search, lookup, keyword research, comparable-account search, 
 
 Required user-facing point:
 
-灵造按实际查看的账号、笔记和内容深度划分基础与深度：基础看标题、封面、点赞/收藏/评论、链接和普通搜索能返回的文案信息；进一步看完整文案正文、字幕、逐字稿或更深结构属于深度。免费版的"查看"来自用户素材或 WebSearch，不消耗额度。
+灵造按实际查看的账号、笔记和内容深度划分基础与深度：基础看标题、封面、点赞/收藏/评论、链接和普通搜索能返回的文案信息；进一步看完整文案正文、字幕、逐字稿或更深结构属于深度。免费版的"查看"来自用户素材或 WebSearch。
 
 搜索一次可能返回多条结果。扩大范围来自更多搜索、打开详情/评论、主页深度解析、逐字稿等，开始前先和用户确认范围，不自行扩大。
 

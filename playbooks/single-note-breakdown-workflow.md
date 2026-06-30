@@ -40,7 +40,7 @@ Good wording:
 
 我先按目前能看到的标题、封面、正文和公开互动来拆；如果你还想看评论区真实需求或视频逐字稿，会进入更深一层，我会先告诉你需要打开哪些内容。
 
-## Credit Scope
+## Search Scope
 
 For one known note link:
 
@@ -171,7 +171,7 @@ End with one concrete next step, such as:
 - 我可以继续打开评论区，看大家真实在问什么，再帮你做二次选题。
 - 我可以继续拆它的封面和标题，给你 3 个可直接测试的标题/封面版本。
 - 如果这一版内容太长、不方便收藏，我也可以继续整理成 Word 文档、
-  网页版预览，或者做成可以同步到知识库的结构化版本。
+  网页预览，或者做成可以同步到知识库的结构化版本。
 
 ## Viral Note Type Library
 
@@ -536,7 +536,7 @@ to include shooting/script/comments/adaptation.
 
 When the full breakdown is long, add this packaging sentence:
 
-这份拆解信息量比较大，放在聊天里会有点密。下一步我可以帮你整理成三种更好用的版本：Word 文档方便保存和转发，网页版方便看颜色分组和重点，知识库版方便以后继续沉淀成标题库、封面库、脚本库和不可照抄库。
+这份拆解信息量比较大，放在聊天里会有点密。下一步我可以帮你整理成三种更好用的版本：Word 文档方便保存和转发，网页预览方便看颜色分组和重点，知识库版方便以后继续沉淀成标题库、封面库、脚本库和不可照抄库。
 
 ### Timecoded Video Breakdown
 

@@ -2,8 +2,9 @@
 
 > **出图能力说明（免费版）**：免费版不内置出图接口。本流程的产出是"可直接粘贴到任意出图工具（Midjourney / SD / GPT-4o 等）的 prompt + 视觉 brief"，由你自行生成图片。Agent 不调用任何出图命令。
 
-Use this playbook when Lingzao's image-generation capability is available and
-the user wants actual images, not only prompts. This workflow sits after
+Use this playbook when Lingzao's image-generation execution is needed — it produces **ready-to-paste
+prompt + visual brief packages** the user runs in their own image tool (Lingzao
+calls no image API in the free edition). This workflow sits after
 `visual-generation-and-cover-workflow.md` and `visual-reference-style-library.md`.
 For domestic Agent wrappers, stable tool schemas, model-agnostic provider
 boundaries, known generation bugs, and A Tian example-collection homework, also

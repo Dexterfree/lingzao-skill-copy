@@ -56,8 +56,8 @@ Use these playbooks when relevant:
 - `beginner-account-start-and-topic-radar.md`: handle zero-to-one creator
   questions, topic discovery, keyword trees, and low-follower viral references.
 - `keyword-insight-report-template.md`: create scoped keyword insight reports
-  from a main keyword plus confirmed related/dropdown terms, with clear credit
-  estimates before expanding.
+  from a main keyword plus confirmed related/dropdown terms, with clear scope
+  before expanding.
 - `keyword-to-publishable-content-package.md`: turn a keyword or vague topic
   into publishable Xiaohongshu content packages with selected references,
   topic angles, titles, cover copy, graphic-note structure, spoken scripts,

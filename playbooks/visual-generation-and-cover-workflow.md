@@ -56,7 +56,7 @@ from a keyword or content direction, such as "女性成长", "帮我做一篇图
 1. Confirm the publishing format if unclear: graphic note/image, spoken video,
    or Vlog storyboard.
 2. If graphic note/image is confirmed, use `keyword-to-publishable-content-package.md`
-   to search or inspect public references within the confirmed credit scope.
+   to search or inspect public references within the confirmed scope.
 3. Distill the references into reusable angles: keywords, core point, cover
    promise, page structure, and comment demand.
 4. Rewrite the angle into the user's own publishable graphic-note content. Do
@@ -159,7 +159,7 @@ knowledge card or AI-assisted graphic note instead of inventing a fake
 personal-photo cover.
 
 If the topic is broad, such as 女性成长, first search or inspect a small set of
-recent/high-signal references after credit confirmation, then turn the extracted
+recent/high-signal references after scope confirmation, then turn the extracted
 angle into a graphic-note package. Do not ask the user to provide an image
 prompt.
 
