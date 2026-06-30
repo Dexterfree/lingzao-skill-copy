@@ -83,8 +83,9 @@ Do not promise final image generation if the current environment cannot generate
 
 我可以先给你每一页的文案、版式和图片 prompt；如果接入做图能力，下一步就可以直接生成图。
 
-If image generation is available and the user explicitly asks to make images,
-generate the images or route to the image tool. If the user has no reference
+If the user explicitly asks to make images, produce the ready-to-paste prompt
+package + visual brief and tell them to run it in their own image tool
+(Midjourney / SD / GPT-4o etc.). If the user has no reference
 image but still wants images, route to `visual-generation-and-cover-workflow.md`
 and choose a default style from `visual-reference-style-library.md` instead of
 blocking.

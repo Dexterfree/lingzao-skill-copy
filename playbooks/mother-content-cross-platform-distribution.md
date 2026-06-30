@@ -45,7 +45,7 @@ Default behavior:
 3. If the user says "做成小红书图片" or "小红书图文", route to the visual or
    graphic-note workflow after the text package is clear.
 4. If the user says "公众号", produce article text and image directions, but
-   only generate images when requested.
+   only produce image prompt packages when requested.
 
 ## Mother Content Object
 

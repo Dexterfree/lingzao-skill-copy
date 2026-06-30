@@ -12,7 +12,7 @@ read `image-generation-agent-integration-guide.md`.
 
 The core problem it solves:
 
-- The image tool can produce images, but the result may look ugly, crowded, generic,
+- When the user runs a prompt in their own image tool, the result may look ugly, crowded, generic,
   off-brand, or unlike Xiaohongshu.
 - Ordinary users should not debug prompts. Lingzao should act like a visual
   director: build the image brief, produce the prompt package, review against
@@ -62,7 +62,7 @@ Run image work in this order:
    - Do not tell the user that an obviously weak brief is acceptable.
 
 6. Final delivery
-   - Return the usable images or explain what failed.
+   - Return the ready-to-paste prompt package(s) + visual brief, or explain what failed.
    - Include the caption/keywords for Xiaohongshu or article placement notes
      for WeChat when relevant.
 

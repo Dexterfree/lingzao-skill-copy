@@ -156,12 +156,12 @@ Use this wording:
 
 默认搜索设置：小红书、图文优先、近半年、高赞/高收藏内容优先。如果你只回复 A / B / C，就表示接受这些默认搜索设置；如果你有平台、时间、内容类型或排序偏好，可以和选项一起告诉我。
 
-快速版只搜你给的主关键词；标准版和批量版会先把准备搜索的相关词列出来让你确认，不会默认把所有相关词都搜完。
+快速版只搜你给的主关键词；标准版和深度版会先把准备搜索的相关词列出来让你确认，不会默认把所有相关词都搜完。
 
 If the user already states both scope and search filters, proceed without asking
 again.
 
-If the user states only the scope, such as "标准版", "B", or "批量版", but the
+If the user states only the scope, such as "标准版", "B", or "深度版", but the
 current conversation has not visibly shown the default platform, note type,
 time range, and sorting, show those defaults first and ask the user to reply
 "默认" or edits before searching.

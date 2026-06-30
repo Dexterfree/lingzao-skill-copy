@@ -317,7 +317,7 @@ E. 商业/引流内容：适合看变现和承接。
 F. 封面和标题参考：适合做图文、标题、视觉模板。
 
 If the user chooses a filter, continue with that filter and summarize the new
-scope before expanding scope.
+scope before expanding it.
 
 ### Light Knowledge Base
 

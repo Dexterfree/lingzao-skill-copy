@@ -2,16 +2,17 @@
 
 > **出图能力说明（免费版）**：免费版不内置出图接口。本流程的产出是"可直接粘贴到任意出图工具（Midjourney / SD / GPT-4o 等）的 prompt + 视觉 brief"，由你自行生成图片。Agent 不调用任何出图命令。
 
-Use this guide when Lingzao needs to expose image generation to domestic Agent
-runtimes, CLI wrappers, or other non-OpenAI-native environments.
+Use this guide when a domestic Agent runtime needs Lingzao's image
+prompt-package contract — the ready-to-paste prompt + visual brief it produces
+instead of calling any image API.
 
 This guide is model-agnostic on purpose. Do not expose the provider/model name
 to ordinary users unless the product explicitly decides to make it public. The
 user-facing promise is:
 
-- Lingzao can make Xiaohongshu covers and graphic notes.
-- Lingzao can make WeChat article image packs.
-- Lingzao can make product/course/service cards.
+- Lingzao can produce ready-to-paste prompt packages + visual briefs for Xiaohongshu covers and graphic notes.
+- Lingzao can produce ready-to-paste prompt packages + visual briefs for WeChat article image packs.
+- Lingzao can produce ready-to-paste prompt packages + visual briefs for product/course/service cards.
 - Lingzao can use reference images without copying them.
 - Lingzao can diagnose ugly generations and repair them.
 
@@ -483,14 +484,15 @@ Mitigation:
 - keep safe margins around title and logo
 - use Xiaohongshu vertical 3:4/4:5 and WeChat wide 900:383 or 1080:460
 
-### 12. Provider/Network/Permission Failure
+### 12. User's Image Tool Failure
 
 Symptoms:
 
-- missing image URL
-- expired asset
-- provider timeout
-- missing brief inputs (topic/platform/visual direction)
+- the user reports their image tool failed
+- the user reports their image tool produced nothing
+- the user's generated link/asset expired
+- the user's image tool rejected the prompt (e.g. content filter, length limit)
+- missing brief inputs (topic/platform/visual direction) on Lingzao's side
 
 Mitigation:
 
